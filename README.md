@@ -1,12 +1,10 @@
-# AI-Hiring
-
 <h1 align="center">AI-Powered Hiring & Assessment Platform</h1>
-
----
 
 <p align="center">
 <em>An advanced, multi-agent system for automating and enhancing the recruitment process.</em>
 </p>
+
+---
 
 ## Overview
 
