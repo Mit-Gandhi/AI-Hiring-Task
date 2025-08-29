@@ -66,13 +66,13 @@ pip install -r requirements.txt
 python api_server.py
 ```
 
-### 6) Navigate to frontend folder
+### 5) Navigate to frontend folder
 
 ```bash
 cd frontend
 ```
 
-### 7) Install dependencies
+### 6) Install dependencies
 
 ```bash
 npm install
