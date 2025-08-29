@@ -1,4 +1,3 @@
-'''The Perfect code that makes pdf and assessment tasks also'''
 import random
 import json
 import os
@@ -14,13 +13,10 @@ from reportlab.lib.units import inch
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
 import textwrap
 
-# Configuration - Add your Gemini API key here
-GEMINI_API_KEY = "AIzaSyAgCJ_Yp7qPr_Prn3Wqs3xoP_wU9WpWBVs"  # Replace with your actual API key
+GEMINI_API_KEY = "Replace with your actual API key"
 
-# Initialize Faker for candidate profile generation
 fake = Faker()
 
-# Sample data pools for profile generation
 skills_pool = [
     "Python", "Java", "JavaScript", "React", "Node.js", "AWS", "Docker", 
     "Kubernetes", "Machine Learning", "Data Science", "SQL", "MongoDB",
@@ -1146,7 +1142,6 @@ class PDFGenerator:
         analysis_data = {'analysis': behavioral_analysis["behavioral_analysis"]}
         story.append(self.create_info_table(analysis_data))
         
-        # End of Behavioral Analysis Section
         
         # Build PDF
         doc.build(story)
@@ -1166,13 +1161,10 @@ def display_market_analysis(market_analyzer):
         "Solutions Architect"
     ]
     
-    print("\n" + "="*80)
-    print("MARKET INTELLIGENCE REPORT FOR COMMON TECH ROLES")
-    print("="*80)
+    print("\nMarket Intelligence Report")
     
     for role in common_roles:
-        print(f"\n{role.upper()} - Market Analysis")
-        print("-" * 50)
+        print(f"\n{role} Analysis:")
         
         analysis = market_analyzer.analyze_market_trends(role)
         
@@ -1195,19 +1187,13 @@ def display_market_analysis(market_analyzer):
 
 def get_recruiter_input(market_analyzer):
     """Get input from recruiter about the role and number of candidates."""
-    print("\n" + "="*60)
-    print("AI-POWERED ASSESSMENT GENERATOR WITH PDF OUTPUT")
-    print("="*60)
-    
-    print("\nWelcome! Let's analyze the market and create candidate assessments.")
-    
     # Display market analysis first
     display_market_analysis(market_analyzer)
     
     # Get target role
-    print("\nBased on the market analysis above, please select a role:")
-    print("Common roles: Software Engineer, Data Scientist, Frontend Engineer, Backend Engineer, DevOps Engineer, ML Engineer, Product Manager, Sales Engineer, Solutions Architect")
-    role = input("\nEnter the job role you're hiring for: ").strip()
+    print("\nPlease select a role from:")
+    print("Software Engineer, Data Scientist, Frontend Engineer, Backend Engineer, DevOps Engineer, ML Engineer, Product Manager, Sales Engineer, Solutions Architect")
+    role = input("Enter the job role you're hiring for: ").strip()
     
     if not role:
         role = "Software Engineer"
@@ -1231,16 +1217,13 @@ def get_recruiter_input(market_analyzer):
 
 def display_assessment_summary(candidates, assessments, role, evaluations):
     """Display summary of all generated assessments and evaluations."""
-    print(f"\n" + "="*80)
-    print(f"ASSESSMENT GENERATION COMPLETE FOR {role.upper()}")
-    print("="*80)
+    print(f"\nAssessment Summary for {role}")
     
     # Sort candidates by overall score
     candidate_data = list(zip(candidates, assessments, evaluations))
     candidate_data.sort(key=lambda x: x[2]["overall_score"], reverse=True)
     
-    print("\nCANDIDATE RANKINGS:")
-    print("-" * 50)
+    print("\nCandidate Rankings:")
     
     for i, (candidate, assessment, evaluation) in enumerate(candidate_data, 1):
         name = candidate["personal_info"]["name"]
@@ -1266,7 +1249,6 @@ def display_assessment_summary(candidates, assessments, role, evaluations):
         for criterion, details in evaluation['criteria_scores'].items():
             print(f"• {criterion.replace('_', ' ').title()}: {details['score']}%")
         
-        # Show assessment problems
         problems = assessment.get('problems', [])
         for problem in problems:
             difficulty = problem.get('difficulty', '').upper()
@@ -1277,35 +1259,24 @@ def display_assessment_summary(candidates, assessments, role, evaluations):
         total_time = assessment.get('total_time', 'N/A')
         print(f"Total Assessment Time: {total_time}")
     
-    # Uniqueness check
-    print(f"\nUNIQUENESS VERIFICATION:")
-    print("-" * 50)
-    
     all_titles = []
     for assessment in assessments:
         for problem in assessment.get('problems', []):
             all_titles.append(problem.get('title', ''))
     
     unique_titles = set(all_titles)
-    print(f"Total problems generated: {len(all_titles)}")
-    print(f"Unique problems: {len(unique_titles)}")
-    
-    if len(unique_titles) == len(all_titles):
-        print("SUCCESS: All problems are unique across candidates!")
-    else:
-        print("WARNING: Some problems may be similar.")
+    if len(unique_titles) != len(all_titles):
+        print("\nWarning: Some problems may be similar.")
 
 def main():
     """Main function to generate candidate profiles with assessments and PDF output."""
     
-    # Check API key
     if GEMINI_API_KEY == "your_api_key_here" or not GEMINI_API_KEY:
         print("ERROR: Please set your Gemini API key in the GEMINI_API_KEY variable")
         print("Get your API key from: https://makersuite.google.com/app/apikey")
         return
     
     try:
-        # Initialize generators
         profile_generator = CandidateProfileGenerator()
         assessment_generator = UniqueAssessmentGenerator(GEMINI_API_KEY)
         behavioral_analyzer = BehavioralAnalyzer(GEMINI_API_KEY)
@@ -1313,10 +1284,8 @@ def main():
         criteria_evaluator = CriteriaEvaluator(GEMINI_API_KEY)
         pdf_generator = PDFGenerator()
         
-        # Get recruiter input after showing market analysis
         role, num_candidates = get_recruiter_input(market_analyzer)
         
-        # Create output directories
         os.makedirs("candidate_profiles", exist_ok=True)
         os.makedirs("pdf_reports", exist_ok=True)
         
@@ -1329,31 +1298,25 @@ def main():
         for i in range(1, num_candidates + 1):
             print(f"\nProcessing Candidate {i}/{num_candidates}...")
             
-            # Generate candidate profile
             candidate_profile = profile_generator.generate_profile(i)
             candidate_name = candidate_profile["personal_info"]["name"]
             
             print(f"Generated profile for: {candidate_name}")
             
-            # Generate unique assessment
             assessment = assessment_generator.generate_assessment_for_candidate(
                 role, candidate_profile, i
             )
             
-            # Generate behavioral analysis
             behavioral_analysis = behavioral_analyzer.analyze_candidate(candidate_profile, role)
             print(f"Generated behavioral analysis for: {candidate_name}")
             
-            # Generate hiring criteria evaluation
             evaluation = criteria_evaluator.evaluate_candidate(candidate_profile, assessment, behavioral_analysis, role)
             print(f"Generated hiring evaluation for: {candidate_name}")
             
-            # Store data
             all_candidates.append(candidate_profile)
             all_assessments.append(assessment)
             all_evaluations.append(evaluation)
             
-            # Generate PDF report
             safe_name = "".join(c for c in candidate_name if c.isalnum() or c in (' ', '-', '_')).strip()
             safe_name = safe_name.replace(' ', '_')
             pdf_filename = f"{safe_name}_{role.replace(' ', '_')}_assessment.pdf"
@@ -1365,60 +1328,24 @@ def main():
             except Exception as e:
                 print(f"Error generating PDF for {candidate_name}: {e}")
         
-        # Save all data to JSON files
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
-        # Save candidate profiles
         profiles_file = f"candidate_profiles/all_profiles_{role.replace(' ', '_')}_{timestamp}.json"
         with open(profiles_file, 'w') as f:
             json.dump(all_candidates, f, indent=2)
         
-        # Save assessments
         assessments_file = f"candidate_profiles/all_assessments_{role.replace(' ', '_')}_{timestamp}.json"
         with open(assessments_file, 'w') as f:
             json.dump(all_assessments, f, indent=2)
         
-        # Display detailed summary with evaluations
         display_assessment_summary(all_candidates, all_assessments, role, all_evaluations)
         
-        print(f"\n" + "="*80)
-        print(f"FILES GENERATED")
-        print("="*80)
-        print(f"PDF Reports Directory: pdf_reports/ ({num_candidates} files)")
-        print(f"Candidate Profiles JSON: {profiles_file}")
-        print(f"Assessment Data JSON: {assessments_file}")
+        print(f"\nFiles generated:")
+        print(f"- PDF Reports: pdf_reports/ ({num_candidates} files)")
+        print(f"- Profiles: {profiles_file}")
+        print(f"- Assessments: {assessments_file}")
         
-        print(f"\nPDF REPORT STRUCTURE FOR EACH CANDIDATE:")
-        print("- Personal Information (Name, Email, Phone, Location)")
-        print("- Professional Summary (Current Role, Experience)")
-        print("- Technical Skills")
-        print("- Work Experience History")
-        print("- Education Background")
-        print("- Key Projects Portfolio")
-        print("- Professional Certifications")
-        print("- Assessment Overview")
-        print("- Detailed Assessment Problems")
-        print("- Special Instructions")
-        
-        print(f"\nASSESSMENT STRUCTURE:")
-        print("- 1 Difficult Project Challenge (3-4 hours)")
-        print("- 1 Medium Technical Challenge (1-2 hours)")
-        print("- 1 Hard System Design Challenge (1-2 hours)")
-        print("- Total Time: 5-8 hours per candidate")
-        print("- All problems are unique across candidates")
-        
-        # Show specific project examples
-        print(f"\nEXAMPLE PROJECT ASSIGNMENTS:")
-        for i, assessment in enumerate(all_assessments[:3], 1):  # Show first 3 examples
-            difficult_problem = next((p for p in assessment["problems"] if p["difficulty"] == "difficult"), {})
-            project_title = difficult_problem.get("title", "N/A")
-            candidate_name = all_candidates[i-1]["personal_info"]["name"]
-            print(f"Candidate {i} ({candidate_name}): {project_title}")
-        
-        if len(all_assessments) > 3:
-            print(f"... and {len(all_assessments) - 3} more unique projects")
-        
-        print(f"\nSUCCESS! Generated {num_candidates} complete candidate profiles with unique assessments.")
+        print(f"\nGenerated {num_candidates} candidate profiles with unique assessments.")
         print("Each PDF contains both the candidate profile and their personalized assessment.")
         print("All assessments are guaranteed to be unique to prevent copying.")
         
@@ -1433,16 +1360,4 @@ def main():
         print("4. Check if you have write permissions in current directory")
 
 if __name__ == "__main__":
-    # Installation requirements
-    print("="*60)
-    print("AI-POWERED ASSESSMENT GENERATOR WITH PDF OUTPUT")
-    print("="*60)
-    print("\nRequired packages:")
-    print("pip install google-generativeai faker reportlab")
-    print("\nSetup instructions:")
-    print("1. Get your Gemini API key from: https://makersuite.google.com/app/apikey")
-    print("2. Replace 'your_api_key_here' with your actual API key")
-    print("3. Run this script")
-    print("-" * 60)
-    
     main()
