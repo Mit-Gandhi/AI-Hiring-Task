@@ -4,8 +4,6 @@
 <em>An advanced, multi-agent system for automating and enhancing the recruitment process.</em>
 </p>
 
----
-
 ## Overview
 
 This project is a comprehensive, AI-driven platform designed to revolutionize the technical recruitment lifecycle. It leverages multiple specialized AI agents to automate the creation of realistic candidate profiles, generate unique and role-specific technical assessments, analyze market trends, and evaluate candidates for behavioral and cultural fit.
