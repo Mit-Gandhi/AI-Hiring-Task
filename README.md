@@ -10,18 +10,11 @@
   <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/FastAPI-%23009688?style=for-the-badge&logo=fastapi&logoColor=white" />
   <img src="https://img.shields.io/badge/LangChain-%23F7DF1E?style=for-the-badge&logo=chainlink&logoColor=black" />
-  <img src="https://img.shields.io/badge/FAISS-%2300BFFF?style=for-the-badge&logo=facebook&logoColor=white" />
   <img src="https://img.shields.io/badge/Google%20Gemini-%234285F4?style=for-the-badge&logo=google&logoColor=white" />
   <img src="https://img.shields.io/badge/React.js-%2361DAFB?style=for-the-badge&logo=react&logoColor=black" />
   <img src="https://img.shields.io/badge/Vite-%23646CFF?style=for-the-badge&logo=vite&logoColor=white" />
   <img src="https://img.shields.io/badge/TailwindCSS-%2306B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" />
 </p>
-
-#### Collaborator
-
-| Name | GitHub |
-|------|--------|
-| Aryan Gaddadavara | [@AryanG211](https://github.com/AryanG211) |
 
 ---
 
