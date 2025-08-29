@@ -8,15 +8,6 @@
 <em>An advanced, multi-agent system for automating and enhancing the recruitment process.</em>
 </p>
 
-<p align="center">
-<img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge"/>
-<img src="https://img.shields.io/badge/FastAPI-0.100+-green?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI Badge"/>
-<img src="https://img.shields.io/badge/Google%20Gemini-AI-blue?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini Badge"/>
-<img src="https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react&logoColor=white" alt="React Badge"/>
-<img src="https://img.shields.io/badge/Vite-%23646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite Badge"/>
-<img src="https://img.shields.io/badge/Material%20UI-5.14.10-blue?style=for-the-badge&logo=mui&logoColor=white" alt="Material UI Badge"/>
-</p>
-
 ## Overview
 
 This project is a comprehensive, AI-driven platform designed to revolutionize the technical recruitment lifecycle. It leverages multiple specialized AI agents to automate the creation of realistic candidate profiles, generate unique and role-specific technical assessments, analyze market trends, and evaluate candidates for behavioral and cultural fit.
