@@ -1,46 +1,43 @@
 # AI-Hiring
 
-<h1 align="center">AI Hiring</h1>
-
-<p align="center">
-  <em>AI Hiring Recruiter</em>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-%23009688?style=for-the-badge&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/LangChain-%23F7DF1E?style=for-the-badge&logo=chainlink&logoColor=black" />
-  <img src="https://img.shields.io/badge/Google%20Gemini-%234285F4?style=for-the-badge&logo=google&logoColor=white" />
-  <img src="https://img.shields.io/badge/React.js-%2361DAFB?style=for-the-badge&logo=react&logoColor=black" />
-  <img src="https://img.shields.io/badge/Vite-%23646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/TailwindCSS-%2306B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-</p>
+<h1 align="center">AI-Powered Hiring & Assessment Platform</h1>
 
 ---
 
+<p align="center">
+<em>An advanced, multi-agent system for automating and enhancing the recruitment process.</em>
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge"/>
+<img src="https://img.shields.io/badge/FastAPI-0.100+-green?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI Badge"/>
+<img src="https://img.shields.io/badge/Google%20Gemini-AI-blue?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini Badge"/>
+<img src="https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react&logoColor=white" alt="React Badge"/>
+<img src="https://img.shields.io/badge/Vite-%23646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite Badge"/>
+<img src="https://img.shields.io/badge/Material%20UI-5.14.10-blue?style=for-the-badge&logo=mui&logoColor=white" alt="Material UI Badge"/>
+</p>
+
 ## Overview
 
-The **RAG-Based Delivery Agent** is an AI-powered voice-enabled assistant for delivery-related tasks.  
-It combines **Retrieval-Augmented Generation (RAG)** with **multilingual voice interaction** to answer delivery-related queries using a knowledge base of documents (e.g., PDF manuals, delivery guidelines).
+This project is a comprehensive, AI-driven platform designed to revolutionize the technical recruitment lifecycle. It leverages multiple specialized AI agents to automate the creation of realistic candidate profiles, generate unique and role-specific technical assessments, analyze market trends, and evaluate candidates for behavioral and cultural fit.
 
-This agent:
-- Listens to the user via speech recognition  
-- Understands their query in Hindi, English
-- Retrieves relevant context from a vector store (FAISS)  
-- Generates a natural response using Google Gemini or another LLM  
-- Speaks the answer back in the same language
+The system is composed of a powerful Python backend that orchestrates the AI agents and a modern React frontend that provides an intuitive interface for recruiters. Recruiters can specify a job role and the number of candidates, and the platform will generate detailed PDF reports for each, complete with a unique assessment designed to prevent plagiarism and accurately gauge a candidate's skills.
 
 ---
 
 ## Features
 
-- 🎙 **Voice Interaction** – Listen & speak in multiple languages
-- 🌍 **Multilingual Support** – Hindi, English
-- 📄 **Document-Aware** – Reads PDF documents & answers using RAG
-- 🧠 **FAISS Vector Search** – Fast semantic retrieval
-- 🤖 **Google Gemini Integration** – For high-quality answers
-- ⚡ **FastAPI Backend** – Lightweight and responsive API
-- 🔄 **Real-Time Conversation Loop** – Continuous Q&A until stopped
+- Realistic Candidate Profile Generation: Automatically creates detailed and lifelike candidate profiles using Faker, including work experience, skills, education, and even a simulated LinkedIn bio.
+
+- Unique, AI-Generated Assessments: Utilizes Google Gemini to generate a unique set of three problems for each candidate based on the target job role: one difficult project-based task, one medium problem-solving challenge, and one hard system design question. This ensures no two candidates receive the same assessment.
+
+- Behavioral & Cultural Fit Analysis: An AI agent analyzes a candidate's qualitative data (like a LinkedIn bio) to identify keywords and themes related to collaboration, problem-solving, and communication, providing insights into their soft skills without demographic bias.
+
+- Market Intelligence & Sourcing Optimizer: Another AI agent analyzes simulated market data to identify talent trends, compensation benchmarks, and optimal sourcing channels for various job roles, generating a summary report with actionable recommendations.
+
+- Comprehensive PDF Reporting: Generates professional, multi-page PDF reports for each candidate, detailing their profile, the unique assessment questions, and the behavioral analysis.
+
+- Web-Based User Interface: A clean frontend built with React and Material-UI allows recruiters to easily configure and trigger the generation process, view market analysis, and download the generated reports individually or as a single .zip file.
 
 ---
 
@@ -48,14 +45,11 @@ This agent:
 
 | Layer | Technology |
 |-------|------------|
-| **Backend Framework** | FastAPI |
-| **AI/LLM** | Google Gemini via LangChain |
-| **Vector Store** | FAISS |
-| **Embeddings** | Google Generative AI embeddings |
-| **Speech Recognition** | SpeechRecognition (Google STT API) |
-| **Text-to-Speech** | gTTS |
-| **File Processing** | PyPDF |
-| **Language Detection** | langdetect |
+| **Frontend** | React, Vite, Material-UI (MUI), Axios |
+| **Backend** | Python, FastAPI |
+| **AI & LLM** | Google Gemini |
+| **Data Generation** | Faker |
+| **PDF Generation** | ReportLab |
 
 ---
 
@@ -64,8 +58,8 @@ This agent:
 ### 1) Clone the Repository
 
 ```bash
-git clone https://github.com/Mit-Gandhi/RAG-Based-Delivery-Agent.git
-cd RAG-Based-Delivery-Agent
+git clone https://github.com/Mit-Gandhi/AI-Hiring-Task.git
+cd AI-Hiring-Task
 ```
 ### 2) Navigate to backend folder
 
@@ -79,17 +73,10 @@ cd backend
 pip install -r requirements.txt
 ```
 
-### 4) Set Environment Variables
-Create a .env file:
+### 4) Run backend
 
 ```bash
-GOOGLE_API_KEY=your_google_api_key
-```
-
-### 5) Run backend
-
-```bash
-uvicorn app:app --reload
+python api_server.py
 ```
 
 ### 6) Navigate to frontend folder
